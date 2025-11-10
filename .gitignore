@@ -1,0 +1,17 @@
+src/BuildingBlocks/BuildingBlocks/.vs/
+src/BuildingBlocks/BuildingBlocks/bin/
+src/BuildingBlocks/BuildingBlocks/obj/
+src/Services/Expedientes/Expedientes.Domain/obj/
+src/Services/Expedientes/Expedientes.Repository/obj/
+src/Services/Expedientes/Expedientes/.vs/
+src/Services/Expedientes/Expedientes/bin/
+src/Services/Expedientes/Expedientes.Domain/bin/
+src/Services/Expedientes/Expedientes.Repository/bin/
+src/Services/Expedientes/Expedientes/obj/
+src/Services/Iam/Iam.Domain/bin/
+src/Services/Iam/Iam.Domain/obj/
+src/Services/Iam/Iam.Repository/bin/
+src/Services/Iam/Iam.Repository/obj/
+src/Services/Iam/Iam/.vs/
+src/Services/Iam/Iam/bin/
+src/Services/Iam/Iam/obj/
