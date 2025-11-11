@@ -24,9 +24,15 @@ await app.Services.ApplyMigrationsAsync<AppIamContext>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
+
+app.UsePathBase("/iam");
+app.UseRouting();
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.RoutePrefix = "swagger"; 
+});
 
 app.UseHttpsRedirection();
 

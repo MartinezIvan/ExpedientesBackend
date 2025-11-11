@@ -14,11 +14,5 @@ public class AppExpedientesContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppExpedientesContext).Assembly);
-
-        modelBuilder.Entity<Estado>().HasData(
-            new Estado("Creado"),
-            new Estado("EnTramite"),
-            new Estado("Cerrado")
-        );
     }
 }

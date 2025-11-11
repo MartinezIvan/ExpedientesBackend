@@ -25,6 +25,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UsePathBase("/expedientes");
+app.UseRouting();
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.RoutePrefix = "swagger";
+});
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
