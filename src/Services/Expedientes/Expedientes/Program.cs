@@ -1,9 +1,18 @@
 using BuildingBlocks.Infra;
 using Expedientes.Repository;
+using Expedientes.Repository.Interfaces;
+using Expedientes.Repository.Repositories;
+using Expedientes.Services.Interfaces;
+using Expedientes.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSqlServerDbContext<AppExpedientesContext>(builder.Configuration);
 
+builder.Services.AddScoped<IMovimientoService, MovimientoService>();
+builder.Services.AddScoped<IEstadoService, EstadoService>();
+builder.Services.AddScoped<IExpedienteService, ExpedienteService>();
+builder.Services.AddScoped<IFojaService, FojaService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddControllers();
 
 builder.Services.AddRabbitMqMassTransit(
