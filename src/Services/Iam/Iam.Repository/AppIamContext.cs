@@ -17,6 +17,11 @@ namespace Iam.Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppIamContext).Assembly);
+
+            modelBuilder.Entity<Rol>().HasData(
+                new Rol(Guid.Parse("10000000-0000-0000-0000-000000000001"), "Admin"),
+                new Rol(Guid.Parse("10000000-0000-0000-0000-000000000002"), "Usuario")
+            );
         }
 
     }

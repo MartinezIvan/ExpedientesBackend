@@ -11,5 +11,9 @@
         {
             Descripcion = descripcion;
         }
+        public Rol(Guid id, string descripcion) : this(descripcion)
+        {
+            Id = id;
+        }
     }
 }

@@ -1,12 +1,19 @@
 
 using BuildingBlocks.Infra;
 using Iam.Repository;
+using Iam.Repository.Interfaces;
+using Iam.Repository.Repositories;
+using Iam.Services.Interfaces;
+using Iam.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSqlServerDbContext<AppIamContext>(builder.Configuration);
 
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IRolService, RolService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddControllers();
 
 builder.Services.AddRabbitMqMassTransit(

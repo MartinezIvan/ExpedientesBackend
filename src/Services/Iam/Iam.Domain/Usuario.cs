@@ -6,9 +6,11 @@
         public string Nombre { get; private set; } = default!;
         public string Apellido { get; private set; } = default!;
         public string Email { get; private set; } = default!;
+        public string PasswordHash { get; private set; } = default!;
         public Guid TipoDocumentoId { get; private set; }
         public Guid RolId { get; private set; }
         public string NroDocumento { get; private set; } = default!;
+        public string NroTelefono { get; private set; } = default!;
         public bool Activo { get; private set; } = true;
         public DateTime FechaNacimiento { get; private set; }
 
@@ -21,7 +23,7 @@
 
         private Usuario() { }
 
-        public Usuario(string nombre, string apellido, string email, Guid tipoDocumentoId, string nroDocumento, DateTime fechaNacimiento)
+        public Usuario(string nombre, string apellido, string email, Guid tipoDocumentoId, string nroDocumento, DateTime fechaNacimiento, string nroTelefono, string hashedPassword, Guid rolId)
         {
             Nombre = nombre;
             Apellido = apellido;
@@ -29,6 +31,9 @@
             TipoDocumentoId = tipoDocumentoId;
             NroDocumento = nroDocumento;
             FechaNacimiento = fechaNacimiento;
+            NroTelefono = nroTelefono;
+            PasswordHash = hashedPassword;
+            RolId = rolId;
         }
 
         public void Activar() { Activo = true; ActualizadoEnUtc = DateTime.UtcNow; }

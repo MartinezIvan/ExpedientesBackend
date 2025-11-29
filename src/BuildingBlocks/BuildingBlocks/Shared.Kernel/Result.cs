@@ -1,7 +1,7 @@
 ﻿using System.Net;
 
 namespace BuildingBlocks.Shared.Kernel;
-public class Result<T>
+public class Result<T> where T : class
 {
     public HttpStatusCode IsSuccess { get; }
     public string? Error { get; }

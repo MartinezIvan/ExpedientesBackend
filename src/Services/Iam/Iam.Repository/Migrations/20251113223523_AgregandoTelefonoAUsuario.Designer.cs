@@ -4,6 +4,7 @@ using Iam.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Iam.Repository.Migrations
 {
     [DbContext(typeof(AppIamContext))]
-    partial class AppIamContextModelSnapshot : ModelSnapshot
+    [Migration("20251113223523_AgregandoTelefonoAUsuario")]
+    partial class AgregandoTelefonoAUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,18 +42,6 @@ namespace Iam.Repository.Migrations
                         .IsUnique();
 
                     b.ToTable("Roles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("10000000-0000-0000-0000-000000000001"),
-                            Descripcion = "Admin"
-                        },
-                        new
-                        {
-                            Id = new Guid("10000000-0000-0000-0000-000000000002"),
-                            Descripcion = "Usuario"
-                        });
                 });
 
             modelBuilder.Entity("Iam.Domain.Sector", b =>
@@ -130,10 +121,6 @@ namespace Iam.Repository.Migrations
                         .HasColumnType("nvarchar(32)");
 
                     b.Property<string>("NroTelefono")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

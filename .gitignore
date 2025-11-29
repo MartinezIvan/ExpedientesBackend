@@ -15,3 +15,6 @@ src/Services/Iam/Iam.Repository/obj/
 src/Services/Iam/Iam/.vs/
 src/Services/Iam/Iam/bin/
 src/Services/Iam/Iam/obj/
+src/Services/Expedientes/Expedientes.Services/obj/
+src/Services/Iam/Iam.Services/bin/
+src/Services/Iam/Iam.Services/obj/

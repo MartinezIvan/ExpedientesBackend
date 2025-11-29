@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expedientes.Domain", "..\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expedientes.Repository", "..\Expedientes.Repository\Expedientes.Repository.csproj", "{AEDF4C0E-A77E-3536-7CA0-098A5EA594C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expedientes.Services", "..\Expedientes.Services\Expedientes.Services.csproj", "{47A948F8-7AA7-4545-8A99-1EE98199C6EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AEDF4C0E-A77E-3536-7CA0-098A5EA594C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEDF4C0E-A77E-3536-7CA0-098A5EA594C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEDF4C0E-A77E-3536-7CA0-098A5EA594C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47A948F8-7AA7-4545-8A99-1EE98199C6EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A948F8-7AA7-4545-8A99-1EE98199C6EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A948F8-7AA7-4545-8A99-1EE98199C6EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A948F8-7AA7-4545-8A99-1EE98199C6EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
