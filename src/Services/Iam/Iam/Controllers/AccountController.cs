@@ -22,9 +22,9 @@ namespace Iam.Controllers
         }
         
         [HttpPost("Login")]
-        public async Task<Result<IActionResult>> Login([FromBody]LoginRequest loginRequest)
+        public async Task<Result<string>> Login([FromBody]LoginRequest loginRequest)
         {
-            return Result<IActionResult>.Success(Ok(await _accountService.LoginAsync(loginRequest.Email, loginRequest.Password)));
+            return Result<string>.Success(await _accountService.LoginAsync(loginRequest.Email, loginRequest.Password));
         }
 
         [HttpPost("Register")]

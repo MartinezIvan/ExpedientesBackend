@@ -64,7 +64,8 @@ namespace Iam.Services.Services
             {
             new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim("role", "User")
+            new Claim("role", "Usuario"),
+            new Claim("userId", userId.ToString())
         };
 
             var token = new JwtSecurityToken(

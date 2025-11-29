@@ -5,4 +5,5 @@ namespace Expedientes.Repository.Interfaces;
 
 public interface IExpedienteRepository : IGenericRepository<Expediente>
 {
+    new Task<Expediente?> GetById(Guid id);
 }
