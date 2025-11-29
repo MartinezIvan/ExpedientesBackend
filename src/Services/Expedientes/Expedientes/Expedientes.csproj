@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
     <ProjectReference Include="..\Expedientes.Domain\Expedientes.Domain.csproj" />
     <ProjectReference Include="..\Expedientes.Repository\Expedientes.Repository.csproj" />
+    <ProjectReference Include="..\Expedientes.Services\Expedientes.Services.csproj" />
   </ItemGroup>
 
 </Project>

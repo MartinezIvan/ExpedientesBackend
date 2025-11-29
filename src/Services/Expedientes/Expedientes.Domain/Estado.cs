@@ -8,6 +8,12 @@ public class Estado
         Id = Guid.NewGuid();
         Descripcion = desc;
     }
+
+    public Estado(Guid id, string desc)
+    {
+        Id = id;
+        Descripcion = desc;
+    }
     public Guid Id { get; set; } = Guid.NewGuid();
     public string Descripcion { get; private set; }
 
