@@ -1,4 +1,5 @@
-﻿using Iam.Domain;
+﻿using BuildingBlocks.Contracts.Usuarios;
+using Iam.Domain;
 using Iam.Repository.Interfaces;
 using Iam.Requests;
 using Iam.Services.Interfaces;
@@ -74,6 +75,16 @@ namespace Iam.Services.Services
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public Task<ICollection<ListadoUsuarioDTO>> ObtenerUsuarios()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<DetalleUsuarioDTO> ObtenerDetalle(Guid guid)
+        {
+            throw new NotImplementedException();
         }
     }
 }

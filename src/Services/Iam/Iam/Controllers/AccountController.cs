@@ -38,17 +38,17 @@ namespace Iam.Controllers
         }
 
         [HttpGet]
-        public Task<Result<ICollection<ListadoUsuarioDTO>>> Get()
+        public async Task<Result<ICollection<ListadoUsuarioDTO>>> Get()
         {
             return Result<ICollection<ListadoUsuarioDTO>>.Success(await _accountService.ObtenerUsuarios());
         }
 
         [HttpGet("guid")]
-        public Task<Result<DetalleUsuarioDTO>> Get(Guid guid)
+        public async Task<Result<DetalleUsuarioDTO>> Get(Guid guid)
         {
             if (!ModelState.IsValid)
             {
-                return Result<IActionResult>.Failure(HttpStatusCode.BadRequest, "Guid no proporcionado o incorrecto");
+                return Result<DetalleUsuarioDTO>.Failure(HttpStatusCode.BadRequest, "Guid no proporcionado o incorrecto");
             }
             return Result<DetalleUsuarioDTO>.Success(await _accountService.ObtenerDetalle(guid));
         }
