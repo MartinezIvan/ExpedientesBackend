@@ -30,6 +30,12 @@ namespace Iam.Repository
                 new Sector(Guid.Parse("e69d41f0-5a46-4b9d-840a-dd76d55c92cd"), "Investigacion"),
                 new Sector(Guid.Parse("e6f5f7ca-079e-4a5c-b1cb-d03f953a21b2"), "Administracion")
             );
+
+            modelBuilder.Entity<TipoDocumento>().HasData(
+                new TipoDocumento(Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6"), "DNI"),
+                new TipoDocumento(Guid.Parse("e9210cfd-f497-428a-81d9-dd7cae9a0adf"), "Pasaporte"),
+                new TipoDocumento(Guid.Parse("34ed1c14-f92a-4b29-b5e4-4a0fef9e9ec3"), "Cedula de Ciudadania")
+            );
         }
 
     }

@@ -6,10 +6,11 @@ public class MapsterConfiguration
 {
     public static void ConfigureMapster()
     {
-        ConfigureUsuarioMapster();
+        ConfigureMovimientoMapster();
+        ConfigureEstadoMapster();
     }
 
-    private static void ConfigureUsuarioMapster()
+    private static void ConfigureMovimientoMapster()
     {
         TypeAdapterConfig<Movimiento, ListadoMovimientoDTO>
             .NewConfig()
@@ -19,6 +20,15 @@ public class MapsterConfiguration
             .Map(dest => dest.IdSectorDestino, src => src.SectorHastaId)
             .Map(dest => dest.EstadoExpediente, src => src.Estado.Descripcion)
             .Map(dest => dest.Detalle, src => src.Detalle);
+
+    }
+
+
+    private static void ConfigureEstadoMapster()
+    {
+        TypeAdapterConfig<Estado, EstadoDTO>
+            .NewConfig()
+            .Map(dest => dest.Nombre, src => src.Descripcion);
 
     }
 }

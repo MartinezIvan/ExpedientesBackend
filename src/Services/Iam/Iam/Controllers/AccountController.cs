@@ -52,5 +52,15 @@ namespace Iam.Controllers
             }
             return Result<DetalleUsuarioDTO>.Success(await _accountService.ObtenerDetalle(guid));
         }
+
+        [HttpGet("DataUser/guid")]
+        public async Task<Result<InfoUserActivo>> DataUser(Guid guid)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Result<InfoUserActivo>.Failure(HttpStatusCode.BadRequest, "Guid no proporcionado o incorrecto");
+            }
+            return Result<InfoUserActivo>.Success(await _accountService.ObtenerRolYSectores(guid));
+        }
     }
 }

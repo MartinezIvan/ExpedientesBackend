@@ -10,5 +10,6 @@ namespace Iam.Services.Interfaces
         Task<string> LoginAsync(string email, string password);
         Task<ICollection<ListadoUsuarioDTO>> ObtenerUsuarios();
         Task<DetalleUsuarioDTO> ObtenerDetalle(Guid guid);
+        Task<InfoUserActivo> ObtenerRolYSectores(Guid guid);
     }
 }

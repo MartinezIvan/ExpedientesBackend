@@ -16,7 +16,7 @@ namespace Iam.Services.Services
     {
         private readonly IAccountRepository _accountRepository = unitOfWork.AccountRepository;
         private readonly IRolRepository _rolRepository = unitOfWork.RolRepository;
-        private const string JwtSecretKey = "LaClaveSecretaSuperSegura";
+        private const string JwtSecretKey = "LaClaveSuperSeguraYMuyLarga1234567890";
         private const int TokenExpirationMinutes = 60;
 
         public async Task<string> LoginAsync(string email, string password)
@@ -89,6 +89,13 @@ namespace Iam.Services.Services
         {
             var usuario = await _accountRepository.GetById(guid);
             return usuario is null ? throw new Exception("Usuario no encontrado") : usuario.Adapt<DetalleUsuarioDTO>();
+        }
+
+        public async Task<InfoUserActivo> ObtenerRolYSectores(Guid guid)
+        {
+            var usuario = await _accountRepository.GetById(guid);
+            return usuario is null ? throw new Exception("Usuario no encontrado") : 
+                new InfoUserActivo(guid, usuario.RolId, usuario.Rol.Descripcion, usuario.Sectores.Select(s => new SectoresAsignados(s.SectorId, s.Sector.Nombre)).ToList());
         }
     }
 }
