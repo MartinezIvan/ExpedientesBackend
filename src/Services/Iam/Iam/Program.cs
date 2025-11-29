@@ -13,6 +13,7 @@ builder.Services.AddSqlServerDbContext<AppIamContext>(builder.Configuration);
 
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IRolService, RolService>();
+builder.Services.AddScoped<ISectorService, SectorService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddControllers();
 
@@ -32,6 +33,7 @@ await app.Services.ApplyMigrationsAsync<AppIamContext>();
 if (app.Environment.IsDevelopment())
 {
 }
+MapsterConfiguration.ConfigureMapster();
 
 app.UsePathBase("/iam");
 app.UseRouting();

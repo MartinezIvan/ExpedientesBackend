@@ -15,17 +15,23 @@ public class Movimiento
     public Expediente Expediente { get; private set; } = default!;
 
 
-    private Movimiento(Guid expedienteId, Guid usuarioId, string tipo, Estado estado, string? detalle = null)
+    private Movimiento(Guid expedienteId, Guid usuarioId, Guid estadoId, string? detalle = null)
     {
         ExpedienteId = expedienteId;
         Detalle = detalle;
-        Estado = estado;
+        EstadoId = estadoId;
     }
 
-    public static Movimiento Derivacion(Guid expedienteId, Guid usuarioId, Guid sectorDesde, Guid sectorHasta, Estado estado, string? detalle) =>
-        new(expedienteId, usuarioId, "Derivacion", estado, detalle)
+    public static Movimiento Derivacion(Guid expedienteId, Guid usuarioId, Guid sectorDesde, Guid sectorHasta, Guid estadoId, string? detalle) =>
+        new(expedienteId, usuarioId, estadoId, detalle)
         {
             SectorDesdeId = sectorDesde,
             SectorHastaId = sectorHasta
         };
+
+    public static Movimiento CambioEstado(Guid idExpediente, Guid idUsuario, Guid idSectorActual, Guid idEstado, string detalle) => new(idExpediente, idUsuario, idEstado, detalle)
+    {
+        SectorDesdeId = idSectorActual,
+        SectorHastaId = idSectorActual
+    };
 }

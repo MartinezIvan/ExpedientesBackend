@@ -13,7 +13,7 @@
         public DateTime FechaAlta { get; private set; } = DateTime.UtcNow;
         public Guid EstadoActualId { get; private set; }
         public Estado EstadoActual { get; private set; }
-
+        public Guid IdSectorActual { get; private set; }
         public Guid UsuarioCreadorId { get; private set; }
 
         public ICollection<Movimiento> Movimientos { get; set; }
@@ -21,7 +21,7 @@
 
         public Expediente(
             string numero, string tema, string caratula,
-            Guid usuarioCreadorId, int sectorOrigenId, int sectorDestinoId,
+            Guid usuarioCreadorId,
             string? subTema = null, string? observacion = null)
         {
             Numero = numero;

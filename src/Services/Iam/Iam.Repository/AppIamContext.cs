@@ -22,6 +22,14 @@ namespace Iam.Repository
                 new Rol(Guid.Parse("10000000-0000-0000-0000-000000000001"), "Admin"),
                 new Rol(Guid.Parse("10000000-0000-0000-0000-000000000002"), "Usuario")
             );
+
+            modelBuilder.Entity<Sector>().HasData(
+                new Sector(Guid.Parse("291aefbb-1f66-4aff-a30c-6163d726c43c"), "Desarrollo"),
+                new Sector(Guid.Parse("c6eb1013-ea61-4f0d-9774-ace21596a02a"), "Diseño"),
+                new Sector(Guid.Parse("faafefc4-9368-4624-93ac-1b7a734e7000"), "Calidad"),
+                new Sector(Guid.Parse("e69d41f0-5a46-4b9d-840a-dd76d55c92cd"), "Investigacion"),
+                new Sector(Guid.Parse("e6f5f7ca-079e-4a5c-b1cb-d03f953a21b2"), "Administracion")
+            );
         }
 
     }

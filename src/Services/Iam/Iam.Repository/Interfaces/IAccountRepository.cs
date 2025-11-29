@@ -6,5 +6,7 @@ namespace Iam.Repository.Interfaces
     {
         Task<Usuario> CreateAccountAsync(Usuario usuario);
         Task<Guid?> Login(string email, string password);
+        new Task<Usuario?> GetById(Guid guid);
+        new Task<ICollection<Usuario>> GetAll();
     }
 }

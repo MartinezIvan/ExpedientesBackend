@@ -3,6 +3,7 @@ using Iam.Domain;
 using Iam.Repository.Interfaces;
 using Iam.Requests;
 using Iam.Services.Interfaces;
+using Mapster;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -77,14 +78,17 @@ namespace Iam.Services.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public Task<ICollection<ListadoUsuarioDTO>> ObtenerUsuarios()
+        public async Task<ICollection<ListadoUsuarioDTO>> ObtenerUsuarios()
         {
-            throw new NotImplementedException();
+            var usuarios = await _accountRepository.GetAll();
+
+            return usuarios.Adapt<ICollection<ListadoUsuarioDTO>>();
         }
 
-        public Task<DetalleUsuarioDTO> ObtenerDetalle(Guid guid)
+        public async Task<DetalleUsuarioDTO> ObtenerDetalle(Guid guid)
         {
-            throw new NotImplementedException();
+            var usuario = await _accountRepository.GetById(guid);
+            return usuario is null ? throw new Exception("Usuario no encontrado") : usuario.Adapt<DetalleUsuarioDTO>();
         }
     }
 }

@@ -15,11 +15,11 @@ namespace Expedientes.Repository.Interfaces
         {
             Task<IList<T>> GetAll();
             Task<IList<T>> GetAllIncludingRelations();
-            Task<T> GetById(int id);
+            Task<T> GetById(Guid id);
             Task<ICollection<T>> GetByCriteria(Expression<Func<T, bool>> predicate);
             Task<T> Insert(T entity);
             Task<T> Update(T entity);
-            Task<bool> Delete(int id);
+            Task<bool> Delete(Guid id);
             Task UpdateRange(ICollection<T> entities);
             Task RemoveRange(ICollection<T> entities);
             Task<ICollection<T>> AddRange(ICollection<T> entities);
@@ -60,7 +60,7 @@ namespace Expedientes.Repository.Interfaces
             }
 
 
-            public async Task<T> GetById(int id)
+            public async Task<T> GetById(Guid id)
             {
                 var entity = await _context.Set<T>().FindAsync(id);
 
@@ -72,7 +72,7 @@ namespace Expedientes.Repository.Interfaces
                 return entity;
             }
 
-            public async Task<bool> Delete(int id)
+            public async Task<bool> Delete(Guid id)
             {
                 var entity = await GetById(id);
 

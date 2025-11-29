@@ -11,6 +11,12 @@
         {
             Nombre = nombre;
         }
+        public Sector(Guid id, string nombre)
+        {
+            Id = id;
+            Nombre = nombre;
+        }
+
         public void AsignarSector(Usuario usuario, Rol rol)
         {
             UsuarioXSector ??= new List<UsuarioXSector>();

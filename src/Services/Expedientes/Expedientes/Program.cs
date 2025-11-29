@@ -33,6 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+MapsterConfiguration.ConfigureMapster();
 
 app.UsePathBase("/expedientes");
 app.UseRouting();

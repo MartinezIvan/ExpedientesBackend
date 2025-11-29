@@ -4,6 +4,7 @@
     {
         IAccountRepository AccountRepository { get; }
         IRolRepository RolRepository { get; }
+        ISectorRepository SectorRepository { get; }
 
         Task SaveChangesAsync();
     }

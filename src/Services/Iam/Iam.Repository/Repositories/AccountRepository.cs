@@ -1,6 +1,7 @@
 ﻿using Iam.Domain;
 using Iam.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Iam.Repository.Repositories
 {
@@ -18,6 +19,22 @@ namespace Iam.Repository.Repositories
         {
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email && u.PasswordHash == password);
             return usuario?.Id;
+        }
+
+        public new async Task<Usuario?> GetById(Guid guid)
+        {
+            return await _context.Usuarios
+                .Include(u => u.Rol)
+                .Include(u => u.Sectores)
+                .FirstOrDefaultAsync(u => u.Id == guid);
+        }
+
+        public new async Task<ICollection<Usuario>> GetAll()
+        {
+            return await _context.Usuarios
+                        .Include(u => u.Sectores)
+                        .ToListAsync();
+
         }
     }
 }
