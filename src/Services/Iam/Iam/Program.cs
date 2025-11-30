@@ -5,6 +5,7 @@ using Iam.Repository.Interfaces;
 using Iam.Repository.Repositories;
 using Iam.Services.Interfaces;
 using Iam.Services.Services;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddRabbitMqMassTransit(
     registerConsumers: x =>
     {
         // x.AddConsumer<UsuarioCreadoConsumer>();
+        x.AddConsumer<GetSectorRequestConsumer>();
     });
 builder.Services.AddApiSwagger("IAM API");
 

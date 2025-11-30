@@ -1,4 +1,6 @@
-﻿namespace Expedientes.Domain
+﻿using BuildingBlocks.Contracts.Expedientes;
+
+namespace Expedientes.Domain
 {
     public class Expediente
     {
@@ -21,20 +23,30 @@
 
         public Expediente(
             string numero, string tema, string caratula,
-            Guid usuarioCreadorId,
+            Guid usuarioCreadorId, Guid sectorId, Guid estadoActualId,
             string? subTema = null, string? observacion = null)
         {
             Numero = numero;
             Tema = tema;
             Caratula = caratula;
-            UsuarioCreadorId = usuarioCreadorId;
             SubTema = subTema;
             Observacion = observacion;
+            IdSectorActual = sectorId;
+            UsuarioCreadorId = usuarioCreadorId;
+            EstadoActualId = estadoActualId;
         }
 
         public void AgregarFoja(string detalle, string? url)
         {
             Fojas.Add(new Foja(Id, detalle, url));
+        }
+
+        public void Update(ExpedienteRequest value)
+        {
+            Tema = value.Tema;
+            SubTema = value.Subtema;
+            Observacion = value.Observaciones;
+            Caratula = value.Caratula;
         }
     }
 }

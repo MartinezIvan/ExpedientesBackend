@@ -19,22 +19,37 @@ namespace Expedientes.Controllers
         [HttpGet("{id}")]
         public async Task<Result<DetalleExpedienteDTO>> GetDetalle(Guid id)
         {
-            return Result< DetalleExpedienteDTO >.Success(await _expedienteService.GetDetalle(id));
+            return Result<DetalleExpedienteDTO>.Success(await _expedienteService.GetDetalle(id));
         }
 
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpGet]
+        [Route("GetNumeroExpedienteNuevo")]
+        public async Task<Result<string>> GetNumero()
         {
+            return Result<string>.Success(await _expedienteService.VerificarNumeroExpediente());
+        }
+        
+        [HttpGet]
+        [Route("VerificarNumeroDeExpediente/{numero}")]
+        public async Task<Result<string>> GetNumero(string numero)
+        {
+            return Result<string>.Success(await _expedienteService.GetNumeroExpedienteNuevo(numero));
+        }
+        [HttpPost]
+        public async Task<Result<string>> Post([FromBody]ExpedienteRequest value)
+        {
+            return Result<string>.Success(await _expedienteService.AltaExpediente(value));
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<Result<string>> Put(Guid id, [FromBody] ExpedienteRequest value)
         {
+            return Result<string>.Success(await _expedienteService.EditarExpediente(id, value));
         }
 
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

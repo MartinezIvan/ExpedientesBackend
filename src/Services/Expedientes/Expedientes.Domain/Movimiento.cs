@@ -8,6 +8,7 @@ public class Movimiento
     public DateTime Fecha { get; private set; } = DateTime.UtcNow;
     public string? Detalle { get; private set; }
     public Guid EstadoId { get; set; }
+    public Guid UsuarioId { get; set; }
     public Estado Estado { get; private set; }
     public Guid SectorDesdeId { get; private set; }
     public Guid SectorHastaId { get; private set; }

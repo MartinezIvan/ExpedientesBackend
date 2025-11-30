@@ -5,4 +5,5 @@ namespace Expedientes.Repository.Interfaces;
 
 public interface IEstadoRepository : IGenericRepository<Estado>
 {
+    Task<Estado> ObtenerEstadoInicial();
 }

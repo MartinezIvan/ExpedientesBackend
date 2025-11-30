@@ -67,7 +67,7 @@ public static class MassTransitExtensions
         services.AddMassTransit(x =>
         {
             registerConsumers?.Invoke(x);
-
+            
             x.UsingRabbitMq((ctx, cfg) =>
             {
                 var opts = configuration.GetSection("RabbitMq").Get<RabbitMqOptions>() ?? new();

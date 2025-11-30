@@ -1,4 +1,4 @@
 ﻿namespace BuildingBlocks.Contracts.Usuarios;
 
-public record SectoresSeleccionDTO(Guid id, string nombre);
+public record SectoresSeleccionDTO(Guid Id, string Nombre);
 

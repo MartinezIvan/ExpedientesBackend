@@ -1,3 +1,4 @@
+using BuildingBlocks.Contracts.Usuarios;
 using BuildingBlocks.Infra;
 using Expedientes.Repository;
 using Expedientes.Repository.Interfaces;
@@ -21,6 +22,8 @@ builder.Services.AddRabbitMqMassTransit(
     registerConsumers: x =>
     {
         // x.AddConsumer<UsuarioCreadoConsumer>();
+        x.AddRequestClient<GetSectorRequest>();
+
     });
 builder.Services.AddApiSwagger("Expedientes API");
 
