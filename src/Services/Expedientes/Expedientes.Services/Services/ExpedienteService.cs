@@ -127,4 +127,11 @@ public class ExpedienteService(IUnitOfWork unitOfWork, IRequestClient<GetSectorR
         await _unitOfWork.SaveChangesAsync();
         return expediente.Id.ToString();
     }
+
+    public async Task<EstadisticasDTO> GetEstadisticasSectores(ICollection<Guid> idSectores)
+    {
+        var expedientes = await _expedienteRepository.GetExpedientesDeSectores(idSectores);
+        var expedientesActivos = expedientes.Where(e => e.EstadoActual.Descripcion != "Completado" && e.EstadoActual.Descripcion != "Rechazado").ToList();
+        return new EstadisticasDTO(expedientes.Count, expedientesActivos.Count);
+    }
 }

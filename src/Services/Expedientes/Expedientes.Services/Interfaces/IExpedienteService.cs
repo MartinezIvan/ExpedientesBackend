@@ -8,6 +8,7 @@ public interface IExpedienteService
     Task<string> EditarExpediente(Guid id, ExpedienteRequest value);
     Task<ICollection<ListadoExpedienteDTO>> GetAll();
     Task<DetalleExpedienteDTO> GetDetalle(Guid id);
+    Task<EstadisticasDTO> GetEstadisticasSectores(ICollection<Guid> idSectores);
     Task<string> GetNumeroExpedienteNuevo(string numero);
     Task<string> VerificarNumeroExpediente();
 }

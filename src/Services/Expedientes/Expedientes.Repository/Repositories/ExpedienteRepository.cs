@@ -15,4 +15,12 @@ public class ExpedienteRepository(AppExpedientesContext context) : GenericReposi
             .Include(e => e.Fojas)
             .FirstOrDefaultAsync(c => c.Id == id);
     }
+
+    public async Task<ICollection<Expediente>> GetExpedientesDeSectores(ICollection<Guid> idSectores)
+    {
+        return await _context.Expedientes
+            .Include(e => e.EstadoActual)
+            .Where(c => idSectores.Contains(c.IdSectorActual))
+            .ToListAsync();
+    }
 }

@@ -35,6 +35,13 @@ namespace Expedientes.Controllers
         {
             return Result<string>.Success(await _expedienteService.GetNumeroExpedienteNuevo(numero));
         }
+        [HttpGet]
+        [Route("EstadisticasSectores")]
+        public async Task<Result<EstadisticasDTO>> GetNumero(ICollection<Guid> idSectores)
+        { 
+            return Result<EstadisticasDTO>.Success(await _expedienteService.GetEstadisticasSectores(idSectores));
+        }
+
         [HttpPost]
         public async Task<Result<string>> Post([FromBody]ExpedienteRequest value)
         {
