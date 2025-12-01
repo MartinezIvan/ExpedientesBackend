@@ -44,5 +44,24 @@
             Nombre = nombre; Apellido = apellido; Email = email;
             ActualizadoEnUtc = DateTime.UtcNow;
         }
+
+        public void AsignarRol(Guid idRol)
+        {
+            RolId = idRol;
+        }
+
+        public void AsignarSectores(ICollection<Guid> idSectores)
+        {
+            Sectores.Clear();
+
+            var sectoresNuevos = idSectores
+                .Select(idSector => new UsuarioXSector(idSector, RolId))
+                .ToList();
+            
+            foreach (var sector in sectoresNuevos)
+            {
+                Sectores.Add(sector);
+            }
+        }
     }
 }

@@ -53,10 +53,5 @@ namespace Expedientes.Controllers
         {
             return Result<string>.Success(await _expedienteService.EditarExpediente(id, value));
         }
-
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

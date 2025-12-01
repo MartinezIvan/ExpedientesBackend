@@ -11,11 +11,15 @@
         public Usuario Usuario { get; private set; } = default!;
         public Rol Rol { get; private set; } = default!;
         private UsuarioXSector() { }
-        public UsuarioXSector(Guid usuarioId, Guid sectorId, Guid rolId, bool esPrincipal = false)
+        public UsuarioXSector(Guid sectorId, Guid rolId, bool esPrincipal = false)
         {
-            UsuarioId = usuarioId;
             SectorId = sectorId;
             RolId = rolId;
+        }
+
+        public UsuarioXSector(Guid idUsuario, Guid sectorId, Guid rolId, bool esPrincipal = false): this(sectorId, rolId, esPrincipal)
+        {
+            UsuarioId = idUsuario;
         }
     }
 }

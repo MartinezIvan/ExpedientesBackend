@@ -37,6 +37,25 @@ namespace Iam.Controllers
             return Result<IActionResult>.Success(Ok(await _accountService.RegisterAsync(registerRequest.Adapt<RegisterServiceRequest>())));
         }
 
+        [HttpPut]
+        public async Task<Result<string>> Update([FromBody]UpdateUsuarioRequest updateRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Result<string>.Failure(HttpStatusCode.BadRequest, "Confirmar datos del registro");
+            }
+            return Result<string>.Success(await _accountService.UpdateUsuario(updateRequest));
+        }
+
+        [HttpDelete("{idUsuario}")]
+        public async Task<Result<string>> DesactivarUsuario(Guid idUsuario)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Result<string>.Failure(HttpStatusCode.BadRequest, "El usuario es necesario");
+            }
+            return Result<string>.Success(await _accountService.DesactivarUsuario(idUsuario));
+        }
         [HttpGet]
         public async Task<Result<ICollection<ListadoUsuarioDTO>>> Get()
         {
@@ -44,7 +63,7 @@ namespace Iam.Controllers
         }
 
         [HttpGet("guid")]
-        public async Task<Result<DetalleUsuarioDTO>> Get(Guid guid)
+        public async Task<Result<DetalleUsuarioDTO>> GetById(Guid guid)
         {
             if (!ModelState.IsValid)
             {

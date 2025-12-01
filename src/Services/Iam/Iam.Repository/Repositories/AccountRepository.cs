@@ -26,6 +26,7 @@ namespace Iam.Repository.Repositories
             return await _context.Usuarios
                 .Include(u => u.Rol)
                 .Include(u => u.Sectores)
+                .ThenInclude(us => us.Sector)
                 .FirstOrDefaultAsync(u => u.Id == guid);
         }
 
@@ -33,6 +34,7 @@ namespace Iam.Repository.Repositories
         {
             return await _context.Usuarios
                         .Include(u => u.Sectores)
+                        .ThenInclude(us => us.Sector)
                         .ToListAsync();
 
         }

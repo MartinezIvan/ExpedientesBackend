@@ -15,7 +15,9 @@ namespace Iam.Services.Services
     public class AccountService(IUnitOfWork unitOfWork) : IAccountService
     {
         private readonly IAccountRepository _accountRepository = unitOfWork.AccountRepository;
+        private readonly IUsuarioXSectorRepository _usuarioXSectorRepository = unitOfWork.UsuarioXSectorRepository;
         private readonly IRolRepository _rolRepository = unitOfWork.RolRepository;
+        private readonly IUnitOfWork _unitOfWork = unitOfWork;
         private const string JwtSecretKey = "LaClaveSuperSeguraYMuyLarga1234567890";
         private const int TokenExpirationMinutes = 60;
 
@@ -95,8 +97,34 @@ namespace Iam.Services.Services
         public async Task<InfoUserActivo> ObtenerRolYSectores(Guid guid)
         {
             var usuario = await _accountRepository.GetById(guid);
+            if(usuario.Sectores is null)
+            {
+            }
+                Console.WriteLine(usuario.Sectores.Count);
+            var sectores = usuario.Sectores.Select(s => new SectoresAsignados(s.SectorId, s.Sector.Nombre)).ToList();
             return usuario is null ? throw new Exception("Usuario no encontrado") : 
-                new InfoUserActivo(guid, usuario.RolId, usuario.Rol.Descripcion, usuario.Sectores.Select(s => new SectoresAsignados(s.SectorId, s.Sector.Nombre)).ToList());
+                new InfoUserActivo(guid, usuario.RolId, usuario.Rol.Descripcion, sectores);
+        }
+
+        public async Task<string> DesactivarUsuario(Guid idUsuario)
+        {
+            var usuario = await _accountRepository.GetById(idUsuario) ?? throw new Exception("Usuario no existente en BD");
+            usuario.Desactivar();
+
+            await _unitOfWork.SaveChangesAsync();
+            return usuario.Id.ToString();
+        }
+
+        public async Task<string> UpdateUsuario(UpdateUsuarioRequest updateRequest)
+        {
+            var usuario = await _accountRepository.GetById(updateRequest.Id) ?? throw new Exception("Usuario no encontrado en BD");
+            usuario.AsignarRol(updateRequest.IdRol);
+            usuario.AsignarSectores(updateRequest.IdSectores);
+            
+            await _usuarioXSectorRepository.AddRange(usuario.Sectores);
+            
+            await _unitOfWork.SaveChangesAsync();
+            return usuario.Id.ToString();
         }
     }
 }

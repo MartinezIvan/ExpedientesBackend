@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Contracts.Usuarios;
 using Iam.Requests;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Iam.Services.Interfaces
 {
@@ -11,5 +12,7 @@ namespace Iam.Services.Interfaces
         Task<ICollection<ListadoUsuarioDTO>> ObtenerUsuarios();
         Task<DetalleUsuarioDTO> ObtenerDetalle(Guid guid);
         Task<InfoUserActivo> ObtenerRolYSectores(Guid guid);
+        Task<string> DesactivarUsuario(Guid idUsuario);
+        Task<string> UpdateUsuario(UpdateUsuarioRequest updateRequest);
     }
 }
