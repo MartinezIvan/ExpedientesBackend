@@ -26,6 +26,7 @@ builder.Services.AddRabbitMqMassTransit(
 
     });
 builder.Services.AddApiSwagger("Expedientes API");
+builder.Services.AddDefaultCors();
 
 var app = builder.Build();
 await app.Services.ApplyMigrationsAsync<AppExpedientesContext>();
@@ -37,7 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 MapsterConfiguration.ConfigureMapster();
-
+app.UseDefaultCors();
 app.UsePathBase("/expedientes");
 app.UseRouting();
 app.UseSwagger();

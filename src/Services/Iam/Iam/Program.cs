@@ -28,6 +28,7 @@ builder.Services.AddRabbitMqMassTransit(
         x.AddConsumer<GetSectorRequestConsumer>();
     });
 builder.Services.AddApiSwagger("IAM API");
+builder.Services.AddDefaultCors();
 
 var app = builder.Build();
 await app.Services.ApplyMigrationsAsync<AppIamContext>();
@@ -38,6 +39,7 @@ if (app.Environment.IsDevelopment())
 }
 MapsterConfiguration.ConfigureMapster();
 
+
 app.UsePathBase("/iam");
 app.UseRouting();
 app.UseSwagger();
@@ -45,6 +47,8 @@ app.UseSwaggerUI(c =>
 {
     c.RoutePrefix = "swagger"; 
 });
+
+app.UseDefaultCors();
 
 app.UseHttpsRedirection();
 
