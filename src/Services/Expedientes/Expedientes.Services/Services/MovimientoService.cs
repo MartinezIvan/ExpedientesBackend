@@ -19,7 +19,7 @@ public class MovimientoService(IUnitOfWork unitOfWork) : IMovimientoService
             throw new Exception("El expediente no existe");
         }
         Movimiento movimientoNuevo;
-        if(expediente.IdSectorActual == movimiento.IdSector)
+        if(expediente.IdSectorActual != movimiento.IdSector)
         {
             movimientoNuevo = Movimiento.Derivacion(movimiento.IdExpediente, movimiento.IdUsuario, expediente.IdSectorActual, movimiento.IdSector, movimiento.IdEstado, movimiento.Detalle);
         }

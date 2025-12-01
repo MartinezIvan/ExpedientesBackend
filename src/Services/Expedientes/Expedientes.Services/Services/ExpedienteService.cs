@@ -20,7 +20,8 @@ public class ExpedienteService(IUnitOfWork unitOfWork, IRequestClient<GetSectorR
         var expedientes = await _expedienteRepository.GetAll();
         var mensajeRta = await GetSector(null);
         var sectores = mensajeRta.Sectores;
-        Console.WriteLine(sectores.Select(x => x.Nombre));
+        
+        Console.WriteLine(string.Join(",",sectores.Select(e => $"{e.Nombre}, {e.SectorId}")));
 
         var expedientesMapeados = expedientes.Adapt<ICollection<ListadoExpedienteDTO>>();
 

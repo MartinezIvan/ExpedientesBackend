@@ -18,6 +18,7 @@ public class Movimiento
 
     private Movimiento(Guid expedienteId, Guid usuarioId, Guid estadoId, string? detalle = null)
     {
+        UsuarioId = usuarioId;
         ExpedienteId = expedienteId;
         Detalle = detalle;
         EstadoId = estadoId;

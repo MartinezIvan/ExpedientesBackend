@@ -5,4 +5,5 @@ namespace Expedientes.Repository.Interfaces;
 
 public interface IMovimientoRepository : IGenericRepository<Movimiento>
 {
+    new public Task<ICollection<Movimiento>> GetAll();
 }

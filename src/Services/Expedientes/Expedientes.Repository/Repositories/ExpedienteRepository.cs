@@ -8,10 +8,19 @@ namespace Expedientes.Repository.Repositories;
 public class ExpedienteRepository(AppExpedientesContext context) : GenericRepository<Expediente>(context), IExpedienteRepository
 {
     private readonly AppExpedientesContext _context = context;
+    new public async Task<ICollection<Expediente>> GetAll()
+    {
+        return await _context.Expedientes
+            .Include(e => e.Movimientos)
+            .Include(e => e.EstadoActual)
+            .Include(e => e.Fojas)
+            .ToListAsync();
+    }
     new public async Task<Expediente?> GetById(Guid id)
     {
         return await _context.Expedientes
             .Include(e => e.Movimientos)
+            .Include(e => e.EstadoActual)
             .Include(e => e.Fojas)
             .FirstOrDefaultAsync(c => c.Id == id);
     }
